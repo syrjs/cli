@@ -14,9 +14,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "blargs": "^0.2.0",
-    "webpack": "^3.5.2",
-    "webpack-dev-server": "^2.7.1"
+    "blargs": "^0.2.0"
   },
   "devDependencies": {
     "prettier": "^1.5.3"
