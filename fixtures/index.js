@@ -18,7 +18,7 @@ class MyComponent extends Component {
     this.opacityOutAnimation = new Animated.Value(1);
     this.moveAimation = new Animated.ValueXY({ x: 0, y: 600 });
     styles.square.transform = [
-      { rotateZ: this.spinAnimation },
+      { rotatez: this.spinAnimation },
       { opacity: this.opacityInAnimation },
       { opacity: this.opacityOutAnimation },
       this.moveAimation,
