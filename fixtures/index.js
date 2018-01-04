@@ -7,8 +7,8 @@ const styles = {
     backgroundColor: '#ff00ff',
     top: Dimensions.get('window').height / 2 - 50,
     left: Dimensions.get('window').width / 2 - 100,
-    borderRadius: 30,
-  },
+    borderRadius: 30
+  }
 };
 class MyComponent extends Component {
   constructor() {
@@ -21,7 +21,7 @@ class MyComponent extends Component {
       { rotatez: this.spinAnimation },
       { opacity: this.opacityInAnimation },
       { opacity: this.opacityOutAnimation },
-      this.moveAimation,
+      this.moveAimation
     ];
   }
   render() {
@@ -30,7 +30,7 @@ class MyComponent extends Component {
   moveUp() {
     Animated.timing(this.moveAimation, {
       toValue: { x: 0, y: 0 },
-      duration: 5000,
+      duration: 5000
     }).start(() => {
       this.spin();
     });
@@ -38,7 +38,7 @@ class MyComponent extends Component {
   fadeIn() {
     Animated.timing(this.opacityInAnimation, {
       toValue: 1,
-      duration: 5000,
+      duration: 5000
     }).start(() => {
       this.fadeOut();
     });
@@ -46,7 +46,7 @@ class MyComponent extends Component {
   fadeOut() {
     Animated.timing(this.opacityOutAnimation, {
       toValue: 0,
-      duration: 5000,
+      duration: 5000
     }).start(() => {
       this.fadeIn();
     });
@@ -54,7 +54,7 @@ class MyComponent extends Component {
   spin() {
     Animated.timing(this.spinAnimation, {
       toValue: 360,
-      duration: 5000,
+      duration: 5000
     }).start(() => {
       this.spin();
     });
