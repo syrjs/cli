@@ -1,6 +1,6 @@
 {
   "name": "syr-cli",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "",
   "main": "index.js",
   "preferGlobal": true,
@@ -9,8 +9,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "pretty": "prettier --single-quote --write \"**/*.js\"",
-    "postinstall": "npm install"
+    "pretty": "prettier --single-quote --write \"**/*.js\""
   },
   "author": "",
   "license": "MIT",
