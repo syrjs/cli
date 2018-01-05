@@ -1,6 +1,6 @@
 {
   "name": "syr-cli",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "",
   "main": "index.js",
   "preferGlobal": true,
@@ -13,9 +13,6 @@
   },
   "author": "",
   "license": "MIT",
-  "dependencies": {
-    "blargs": "^0.2.0"
-  },
   "devDependencies": {
     "prettier": "^1.5.3"
   }
