@@ -56,7 +56,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: false,
       appMountId: 'app',
-      title: 'Native Checkout',
+      title: 'Syr Debugger',
       mobile: true,
       template: require('html-webpack-template'),
       links: []
