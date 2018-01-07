@@ -1,17 +1,17 @@
 {
   "name": "syr-cli",
   "version": "1.2.6",
-  "description": "",
+  "description": "The `cli` tools for Syr projects. Get Started Fast. See http://www.github.com/dmikey/syr for more details.",
   "main": "index.js",
   "preferGlobal": true,
   "bin": {
-    "syr": "./lib/cli.js"
+    "syr": "./bin/cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "pretty": "prettier --single-quote --write \"**/*.js\""
   },
-  "author": "",
+  "author": "Derek Anderson",
   "license": "MIT",
   "devDependencies": {
     "prettier": "^1.5.3"
