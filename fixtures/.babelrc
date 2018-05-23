@@ -1,0 +1,8 @@
+{
+  "presets": [
+    ["env"]
+  ],
+  "plugins": [
+    ["@syr/jsx", {"useVariables":true}]
+  ]
+}

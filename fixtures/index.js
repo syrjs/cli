@@ -1,10 +1,4 @@
-import {
-  Component,
-  Render,
-  View,
-  Dimensions,
-  Animated
-} from 'syr';
+import { Component, Render, View, Dimensions, Animated } from 'syr';
 
 const styles = {
   view: {
@@ -25,11 +19,11 @@ const styles = {
 
 class MyComponent extends Component {
   render() {
-    return <View style={styles.view}>
-        <Text style={styles.text}>
-        Welcome to Syr Development!
-        </Text>
-    </View>
+    return (
+      <View style={styles.view}>
+        <Text style={styles.text}>Welcome to Syr Development!</Text>
+      </View>
+    );
   }
 }
 
