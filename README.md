@@ -1,4 +1,4 @@
-# syr-cli
+# cli
 
 The `cli` tool for syr projects. Get Started Fast.
 
