@@ -19,14 +19,18 @@ function getProjectVersions(modules) {
     log.error('No package.json found in the command directory.');
   }
   let ret = [];
-  Object.keys(projectPackage.devDependencies).forEach(function(key, index) {
-    if (modules.indexOf(key) > -1) {
-      ret.push({
-        module: key,
-        version: projectPackage.devDependencies[key]
-      });
-    }
-  });
+
+  if(projectPackage && projectPackage.devDependencies) {
+    Object.keys(projectPackage.devDependencies).forEach(function(key, index) {
+      if (modules.indexOf(key) > -1) {
+        ret.push({
+          module: key,
+          version: projectPackage.devDependencies[key]
+        });
+      }
+    });
+  }
+
   return ret;
 }
 
