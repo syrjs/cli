@@ -35,6 +35,9 @@
   "dependencies": {
     "blargs": "^0.2.0",
     "chalk": "^2.4.1",
-    "console.table": "^0.10.0"
+    "console.table": "^0.10.0",
+    "lowdb": "^1.0.0",
+    "plist": "^3.0.1",
+    "xcode": "^1.0.0"
   }
 }

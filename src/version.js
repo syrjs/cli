@@ -1,28 +1,42 @@
-import { log } from './logger';
 import path from 'path';
+import { log } from './logger';
+import { packageJSON as projectPackage } from './project';
+import { dependencies, versions } from './rc';
+
 const packageJSON = require('../package.json');
 
 function version() {
-  const versions = getProjectVersions(['@syr/core', '@syr/jsx', 'webpack']);
-  versions.push({
+  let appVersion = versions.get();
+  if (!appVersion) {
+    versions.add('latest', projectPackage.version);
+  }
+
+  const coreVersions = getProjectVersions(['@syr/core', '@syr/jsx', 'webpack']);
+  coreVersions.push({
     module: 'syr-cli',
     version: packageJSON.version
   });
-  log.table(versions);
+  log(
+    `\n${projectPackage.name
+      ? projectPackage.name
+      : 'project is'} ${projectPackage.version}\n`
+  );
+  log.table(coreVersions);
 }
 
 function getProjectVersions(modules) {
-  let projectPackage;
-  try {
-    projectPackage = require(`${path.join(global.cwd, 'package.json')}`);
-  } catch (e) {
-    log.error('No package.json found in the command directory.');
-  }
   let ret = [];
 
-  if(projectPackage && projectPackage.devDependencies) {
+  if (projectPackage && projectPackage.devDependencies) {
     Object.keys(projectPackage.devDependencies).forEach(function(key, index) {
       if (modules.indexOf(key) > -1) {
+        if (dependencies && !dependencies.get(projectPackage.version)[key]) {
+          dependencies.add(
+            key,
+            projectPackage.devDependencies[key],
+            projectPackage.version
+          );
+        }
         ret.push({
           module: key,
           version: projectPackage.devDependencies[key]

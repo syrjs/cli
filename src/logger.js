@@ -1,3 +1,7 @@
+/**
+ * This module helps log stuff :D
+ */
+
 import chalk from 'chalk';
 import cTable from 'console.table';
 

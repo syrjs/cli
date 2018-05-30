@@ -1,12 +1,15 @@
 #! /usr/bin/env node
+
+/**
+ * This is the bin link
+ */
+global.debug = false;
+
 import { boot } from './boot';
 import { commands } from './commands';
 import { version } from './version';
 
 const { positionals, switches } = boot();
-
-global.cwd = process.cwd();
-global.debug = false;
 
 function main() {
   const [command, ...parameters] = positionals;

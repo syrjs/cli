@@ -1,3 +1,10 @@
+/**
+ * This module takes care of initializing a project.
+ * It copies files from fixtures, does an npm install
+ * And then runs link to complete the setup
+ *
+ * todo: inline ProjectName into the package.json fixture
+ */
 import fs from 'fs';
 import path from 'path';
 import { cmd as link } from './link';
@@ -26,7 +33,7 @@ const api = {
       'package.json',
       'webpack.config.js'
     ]);
-    const projectPath = path.join(global.cwd, projectName);
+    const projectPath = path.join(process.cwd(), projectName);
 
     // check really quick if a user ran this in a project, warn
     checkForPackageJSON();
@@ -75,7 +82,7 @@ function copyFixtures(fixtures, projectPath, callback) {
 function checkForPackageJSON() {
   let projectPackage;
   try {
-    projectPackage = require(`${path.join(global.cwd, 'package.json')}`);
+    projectPackage = require(`${path.join(process.cwd(), 'package.json')}`);
   } catch (e) {}
   if (projectPackage) {
     log.warn('performing this command from inside a project.');
