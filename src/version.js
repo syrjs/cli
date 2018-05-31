@@ -11,6 +11,8 @@ function version() {
     versions.add('latest', projectPackage.version);
   }
 
+  // these are core things we want to surface to version info
+  // specifically to help with debugging
   const coreVersions = getProjectVersions(['@syr/core', '@syr/jsx', 'webpack']);
   coreVersions.push({
     module: 'syr-cli',

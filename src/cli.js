@@ -1,4 +1,5 @@
 #! /usr/bin/env node
+import "regenerator-runtime/runtime";
 
 /**
  * This is the bin link

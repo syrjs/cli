@@ -3,9 +3,7 @@ function commands(command, optionals) {
   try {
     module = require(`./${command}`);
   } catch (e) {
-    if (e.message.indexOf('Cannot find module') > -1) {
-      console.log(`Command Not Found: ${command}`);
-    }
+    console.log(e);
   }
   module.cmd.apply(this, optionals);
 }
