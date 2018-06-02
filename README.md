@@ -1,4 +1,4 @@
-# cli
+# cli 1.3.3
 
 The `cli` tool for syr projects. Get Started Fast.
 
@@ -23,3 +23,12 @@ syr init MyProjectName
 
 * app is written in ESNext
 * babel import aliases are used to alleviate relative importing
+
+## Roadmap
+
+* dependency resolution
+* ios project management
+* android project management
+* project scaffolding
+* deterministic bundling
+* cloud publishing
