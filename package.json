@@ -10,7 +10,7 @@
     "build": "rm -rf lib;babel src --out-dir lib"
   },
   "engines": {
-    "node": ">=5.0.0"
+    "node": ">=5"
   },
   "bin": {
     "syr": "./lib/cli.js"
@@ -24,6 +24,7 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
+    "babel-plugin-module-alias": "^1.6.0",
     "babel-preset-env": "^1.6.1",
     "mocha": "^3.4.2",
     "mocha-coveralls-reporter": "0.0.5",
@@ -35,10 +36,13 @@
   "dependencies": {
     "blargs": "^0.2.0",
     "chalk": "^2.4.1",
+    "cli-select": "^1.0.2",
     "console.table": "^0.10.0",
-    "lowdb": "^1.0.0",
+    "os-locale": "^2.1.0",
     "plist": "^3.0.1",
     "regenerator-runtime": "^0.11.1",
+    "semver": "^5.5.0",
+    "simple-git": "^1.95.0",
     "xcode": "^1.0.0"
   }
 }

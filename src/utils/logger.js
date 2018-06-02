@@ -14,13 +14,13 @@ function log(message, level) {
       message = chalk.red(message);
       break;
     case 'info':
-      message = chalk.blue(message);
+      message = chalk.white(message);
       break;
     case 'success':
       message = chalk.green(message);
       break;
     default:
-      message = chalk.white(message);
+      message = message;
   }
   console.log(message);
 }
@@ -41,8 +41,8 @@ log.success = message => {
   log(message, 'success');
 };
 
-log.table = table => {
-  console.table(table);
+log.table = function() {
+  console.table.apply(0, arguments);
 };
 
 log.chalk = chalk;

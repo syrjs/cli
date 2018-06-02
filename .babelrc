@@ -5,5 +5,13 @@
         "node": "5"
       }
     }]
+  ],
+  "plugins": [
+    ["module-alias", [
+      { "src": "./src/utils", "expose": "utils" },
+      { "src": "./src/models", "expose": "models" },
+      { "src": "./src/commands", "expose": "commands" },
+      { "src": "./strings", "expose": "strings" }
+    ]]
   ]
 }

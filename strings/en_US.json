@@ -1,0 +1,13 @@
+{
+  "Need Help?":"Need Help?",
+  "Generates bundles from deterministic releases":"Generates bundles from deterministic releases",
+  "Delivers syr native libraries reworked into a prefix or namespace":"Delivers syr native libraries reworked into a prefix or namespace",
+  "Displays this menu":"Displays this menu",
+  "Creates a new project using boilerplate. Includes native projects to get started": "Creates a new project using boilerplate. Includes native projects to get started.",
+  "Manages versioning for the current project. Create and View version information":"Manages versioning for the current project. Create and View version information.",
+  "Starts webpack development server": "Starts webpack development server",
+  "Links or Unlinks node_modules to the current project":"Links or Unlinks node_modules to the current project",
+  "Description": "Description",
+  "Usage":"Usage",
+  "Not Implimented":"Not Implimented"
+}

@@ -17,3 +17,9 @@ syr init MyProjectName
 ## Dependencies
 
 * npm 5+
+
+
+## Development Notes
+
+* app is written in ESNext
+* babel import aliases are used to alleviate relative importing

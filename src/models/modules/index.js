@@ -1,8 +1,8 @@
 import fs from 'fs';
 import path from 'path';
-import { getDirs } from './utils';
+import { getDirs } from 'utils';
 
-function findModules(modulesPath) {
+function get(modulesPath) {
   let dirs = getDirs(modulesPath);
   let namespaces = [];
 
@@ -15,7 +15,7 @@ function findModules(modulesPath) {
 
   if (namespaces.length > 0) {
     namespaces.forEach(namespace => {
-      let submodules = findModules(path.join(modulesPath, namespace)).map(
+      let submodules = get(path.join(modulesPath, namespace)).map(
         (value, index) => `${namespace}/${value}`
       );
       if (submodules && submodules.length > 0) {
@@ -38,7 +38,8 @@ function checkModule(modulePath, moduleDirectory) {
 
   if (
     modulePackage &&
-    (modulePackage.dependencies && modulePackage.dependencies['@syr/core'])
+    ((modulePackage.dependencies && modulePackage.dependencies['@syr/core']) ||
+      modulePackage.name.indexOf('@syr') > -1)
   ) {
     return true;
   }
@@ -46,4 +47,4 @@ function checkModule(modulePath, moduleDirectory) {
   return false;
 }
 
-export { findModules };
+export { get };

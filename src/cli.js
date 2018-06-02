@@ -1,11 +1,9 @@
 #! /usr/bin/env node
-import "regenerator-runtime/runtime";
+import 'regenerator-runtime/runtime';
 
 /**
- * This is the bin link
+ * !!! bin entry
  */
-global.debug = false;
-
 import { boot } from './boot';
 import { commands } from './commands';
 import { version } from './version';
@@ -17,8 +15,9 @@ function main() {
   if (command) {
     commands(command, [parameters, switches]);
   } else {
-    if (switches.version) {
-      version();
+    // --version is passed, as in `syr --version`, send to `syr version --debug`
+    if (switches.version || switches.v) {
+      commands('version', [[], { debug: true }]);
     }
   }
 }

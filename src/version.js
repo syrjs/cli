@@ -1,7 +1,7 @@
 import path from 'path';
-import { log } from './logger';
-import { packageJSON as projectPackage } from './project';
-import { dependencies, versions } from './rc';
+import { log } from 'utils/logger';
+import { packageJSON as projectPackage, getProjects } from './project';
+import { versions } from './rc';
 
 const packageJSON = require('../package.json');
 
@@ -11,19 +11,26 @@ function version() {
     versions.add('latest', projectPackage.version);
   }
 
-  // these are core things we want to surface to version info
-  // specifically to help with debugging
-  const coreVersions = getProjectVersions(['@syr/core', '@syr/jsx', 'webpack']);
-  coreVersions.push({
-    module: 'syr-cli',
-    version: packageJSON.version
+  var projectsPromise = Promise.resolve(getProjects());
+  projectsPromise.then(function(projects) {
+    // these are core things we want to surface to version info
+    // specifically to help with debugging
+    const coreVersions = getProjectVersions([
+      '@syr/core',
+      '@syr/jsx',
+      'webpack'
+    ]);
+    coreVersions.unshift({
+      module: '@syr/cli',
+      version: packageJSON.version
+    });
+    log(
+      `\n${projectPackage.name
+        ? projectPackage.name
+        : 'project is'} ${projectPackage.version}\n`
+    );
+    log.table(coreVersions);
   });
-  log(
-    `\n${projectPackage.name
-      ? projectPackage.name
-      : 'project is'} ${projectPackage.version}\n`
-  );
-  log.table(coreVersions);
 }
 
 function getProjectVersions(modules) {
@@ -32,13 +39,6 @@ function getProjectVersions(modules) {
   if (projectPackage && projectPackage.devDependencies) {
     Object.keys(projectPackage.devDependencies).forEach(function(key, index) {
       if (modules.indexOf(key) > -1) {
-        if (dependencies && !dependencies.get(projectPackage.version)[key]) {
-          dependencies.add(
-            key,
-            projectPackage.devDependencies[key],
-            projectPackage.version
-          );
-        }
         ret.push({
           module: key,
           version: projectPackage.devDependencies[key]

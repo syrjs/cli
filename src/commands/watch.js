@@ -1,6 +1,13 @@
 import fs from 'fs';
 import { exec, execSync } from 'child_process';
+import localeStrings from 'strings';
+
 const watchCommand = 'npm run serve';
+
+const description = {
+  short: localeStrings.get('Starts webpack development server'),
+  usage: 'syr watch'
+};
 
 const api = {
   watch: () => {
@@ -17,4 +24,4 @@ function cmd(parameters, switches) {
   api.watch();
 }
 
-export { cmd, api };
+export { cmd, api, description };

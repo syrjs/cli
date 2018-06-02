@@ -9,11 +9,17 @@ import fs from 'fs';
 import path from 'path';
 import { cmd as link } from './link';
 import { exec, execSync } from 'child_process';
-import { log } from '../logger';
+import { log } from 'utils/logger';
+import localeStrings from 'strings';
 
 const initInstallCommand = `npm install`;
 const syrProjectPaths = {
   ios: '/node_modules/@syr/core/ios/SyrNativeSample'
+};
+
+const description = {
+  short: localeStrings.get('Creates a new project using boilerplate. Includes native projects to get started'),
+  usage: 'syr init myNewProject'
 };
 
 const api = {
@@ -64,7 +70,7 @@ function cmd(parameters, switches) {
   link(parameters, switches);
 }
 
-export { cmd, api };
+export { cmd, api, description };
 
 function copyFixtures(fixtures, projectPath, callback) {
   if (!fs.existsSync(projectPath)) {

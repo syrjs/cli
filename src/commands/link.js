@@ -9,12 +9,36 @@
 
 import fs from 'fs';
 import path from 'path';
-import { log } from '../logger';
-import { findModules } from '../modules';
+import { log } from 'utils/logger';
+import { get as getModules } from 'models/modules';
+import { dependencies, versions } from '../rc';
+import localeStrings from 'strings';
+
+const description = {
+  short:localeStrings.get('Links or Unlinks node_modules to the current project'),
+  usage: 'syr link'
+};
 
 const api = {
   link: modulesPath => {
-    let modules = findModules(modulesPath);
+    // modules in our node_modules directory
+    let modules = getModules(modulesPath);
+    let version = versions.get();
+    let deps = version && version.dependencies;
+    modules.forEach(module => {
+      let nodeModulesPath = path.join(process.cwd(), 'node_modules');
+      let modulePath = path.join(nodeModulesPath, module);
+      let modulePackage = require(path.join(modulePath, 'package.json'));
+      console.log(modulePackage);
+      dependencies.add(
+        module,
+        {
+          version: modulePackage.version,
+          dependencies: modulePackage.dependencies
+        },
+        version.version
+      );
+    });
   },
   unlink: () => {}
 };
@@ -36,4 +60,4 @@ function cmd(parameters, switches) {
   }
 }
 
-export { cmd, api };
+export { cmd, api, description };
