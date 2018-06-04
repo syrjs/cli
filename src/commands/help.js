@@ -17,10 +17,12 @@ const api = {
     log.info('');
     log.table(getCommands());
     log.info('');
-    log.info(`${localeStrings.get('Need Help?')} -> https://www.github.com/syrjs/cli`);
+    log.info(
+      `${localeStrings.get('Need Help?')} -> https://www.github.com/syrjs/cli`
+    );
     log.info('');
   },
-  commandDetail: (commandName) => {
+  commandDetail: commandName => {
     // const commandPath = path.join(__dirname, commandName);
     // const { description } = require(commandPath);
     log.warn('Not implimented');
@@ -29,7 +31,7 @@ const api = {
 
 function cmd(parameters, switches) {
   const [commandName, ...rest] = parameters;
-  if(commandName) {
+  if (commandName) {
     api.commandDetail(commandName);
   } else {
     api.help();
@@ -39,12 +41,17 @@ function cmd(parameters, switches) {
 export { cmd, api, description };
 
 function getCommands() {
-  const commands = fs.readdirSync(__dirname).map(name => path.join(__dirname, name));
+  // get commands from the commands directory
+  // then get the description and usage from the js file
+  const commands = fs.readdirSync(__dirname).map(name => {
+    return { name: name, path: path.join(__dirname, name) };
+  });
   let returnCommands = [];
   commands.forEach(commandPath => {
-    if(commandPath != path.join(__dirname, 'index.js')){
-      const { description } = require(commandPath);
+    if (commandPath.path != path.join(__dirname, 'index.js')) {
+      const { description } = require(commandPath.path);
       returnCommands.push({
+        Command: commandPath.name.replace('.js', ''),
         Description: description.short,
         Usage: description.usage
       });

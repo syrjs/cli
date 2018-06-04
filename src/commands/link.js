@@ -15,7 +15,9 @@ import { dependencies, versions } from '../rc';
 import localeStrings from 'strings';
 
 const description = {
-  short:localeStrings.get('Links or Unlinks node_modules to the current project'),
+  short: localeStrings.get(
+    'Links or Unlinks node_modules to the current project'
+  ),
   usage: 'syr link'
 };
 

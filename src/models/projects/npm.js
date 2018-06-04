@@ -11,6 +11,4 @@ try {
   );
 }
 
-export {
-  info
-};
+export { info };

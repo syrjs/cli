@@ -1,4 +1,8 @@
 import blargs from 'blargs';
+import updateNotifier from 'update-notifier';
+import packageJSON from '../package.json';
+
+updateNotifier({ pkg: packageJSON }).notify();
 
 function boot() {
   // get blargs

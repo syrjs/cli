@@ -2,7 +2,7 @@
 let _values = require(`${__dirname}/en_US.json`);
 
 module.exports = {
-  get: (key) => {
+  get: key => {
     return _values[key] || '';
   }
 };

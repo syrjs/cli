@@ -18,7 +18,9 @@ const syrProjectPaths = {
 };
 
 const description = {
-  short: localeStrings.get('Creates a new project using boilerplate. Includes native projects to get started'),
+  short: localeStrings.get(
+    'Creates a new project using boilerplate. Includes native projects to get started'
+  ),
   usage: 'syr init myNewProject'
 };
 
