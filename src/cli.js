@@ -6,7 +6,6 @@ import 'regenerator-runtime/runtime';
  */
 import { boot } from './boot';
 import { commands } from './commands';
-import { version } from './version';
 
 const { positionals, switches } = boot();
 

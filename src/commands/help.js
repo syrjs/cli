@@ -50,11 +50,13 @@ function getCommands() {
   commands.forEach(commandPath => {
     if (commandPath.path != path.join(__dirname, 'index.js')) {
       const { description } = require(commandPath.path);
-      returnCommands.push({
-        Command: commandPath.name.replace('.js', ''),
-        Description: description.short,
-        Usage: description.usage
-      });
+      if(description) {
+        returnCommands.push({
+          Command: commandPath.name.replace('.js', ''),
+          Description: description.short,
+          Usage: description.usage
+        });
+      }
     }
   });
   return returnCommands;
