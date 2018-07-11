@@ -18,14 +18,22 @@ function getDirs(rootDir, cb) {
 }
 
 function recursiveDirectoriesByName(base, name) {
-  let dirs = getDirs(base);
+
   let ret = [];
 
+  // check to see if this is a directory before we dive into it
+  let stats = fs.lstatSync(base);
+  if(!stats.isDirectory()) {
+    return ret;
+  }
+
+  // then get it's sub directories or files that match our pattern
+  let dirs = getDirs(base);
   dirs.forEach(dir => {
     if (dir.indexOf(name) > -1) {
       ret.push({
         name: dir,
-        path: base
+        value: path.join(base, dir)
       });
     } else {
       let subdirs = recursiveDirectoriesByName(path.join(base, dir), name);

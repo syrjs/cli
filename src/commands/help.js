@@ -7,13 +7,11 @@ import projectPackage from '../../package.json';
 
 const description = {
   short: localeStrings.get('Displays this menu'),
-  usage: 'syr help'
+  usage: 'help {command}'
 };
 
 const api = {
   help: () => {
-    log.info('');
-    log.info(`${log.chalk.yellow('Syr CLI')}: ${projectPackage.version}`);
     log.info('');
     log.table(getCommands());
     log.info('');
@@ -50,11 +48,10 @@ function getCommands() {
   commands.forEach(commandPath => {
     if (commandPath.path != path.join(__dirname, 'index.js')) {
       const { description } = require(commandPath.path);
-      if(description) {
+      if (description && description.usage) {
         returnCommands.push({
-          Command: commandPath.name.replace('.js', ''),
-          Description: description.short,
-          Usage: description.usage
+          Command: description.usage,
+          Description: description.short
         });
       }
     }

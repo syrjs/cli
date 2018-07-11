@@ -3,7 +3,7 @@ import localeStrings from 'strings';
 
 const description = {
   short: localeStrings.get('Generates bundles from deterministic releases'),
-  usage: 'syr bundle --release=1.2.3'
+  usage: 'bundle --release=1.2.3'
 };
 
 const api = {

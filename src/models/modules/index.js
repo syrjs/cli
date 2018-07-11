@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { getDirs } from 'utils';
+import { project as iOSProject } from 'models/projects/ios';
 
 function get(modulesPath) {
   let dirs = getDirs(modulesPath);
@@ -10,7 +11,7 @@ function get(modulesPath) {
     if (dir.indexOf('@') > -1) {
       namespaces.push(dir);
     }
-    return checkModule(modulesPath, dir);
+    return isSyrModule(modulesPath, dir);
   });
 
   if (namespaces.length > 0) {
@@ -27,7 +28,7 @@ function get(modulesPath) {
   return modulesToLink;
 }
 
-function checkModule(modulePath, moduleDirectory) {
+function isSyrModule(modulePath, moduleDirectory) {
   let modulePackage;
 
   try {

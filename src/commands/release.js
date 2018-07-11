@@ -4,7 +4,7 @@ import localeStrings from 'strings';
 const simpleGit = require('simple-git')(process.cwd());
 const description = {
   short: localeStrings.get('Generates bundles from deterministic releases'),
-  usage: 'syr release --tag=MyAwesomeRelease'
+  usage: 'release --tag=MyAwesomeRelease'
 };
 
 const api = {

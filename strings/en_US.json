@@ -1,7 +1,7 @@
 {
   "Need Help?":"Need Help?",
   "Generates bundles from deterministic releases":"Generates bundles from deterministic releases",
-  "Delivers syr native libraries reworked into a prefix or namespace":"Delivers syr native libraries reworked into a prefix or namespace",
+  "Creates a native library from bundles":"Creates a native library from bundles.",
   "Displays this menu":"Displays this menu",
   "Creates a new project using boilerplate. Includes native projects to get started": "Creates a new project using boilerplate. Includes native projects to get started.",
   "Manages versioning for the current project. Create and View version information":"Manages versioning for the current project. Create and View version information.",
@@ -9,5 +9,10 @@
   "Links or Unlinks node_modules to the current project":"Links or Unlinks node_modules to the current project",
   "Description": "Description",
   "Usage":"Usage",
-  "Not Implimented":"Not Implimented"
+  "Not Implimented":"Not Implimented",
+  "No current version set":"No current version set.",
+  "Setting current version":"Setting current version",
+  "Which base project should we use to manage modules for iOS":"Which base project should we use to manage modules for iOS?",
+  "Do you want SyrCLI to manage native projects":"Do you want SyrCLI to manage native projects?",
+  "No dependencies found for iOS would you like to scan node_modules":"No dependencies found for iOS, would you like to scan node_modules?"
 }

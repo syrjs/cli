@@ -6,7 +6,7 @@ const watchCommand = 'npm run serve';
 
 const description = {
   short: localeStrings.get('Starts webpack development server'),
-  usage: 'syr watch'
+  usage: 'watch'
 };
 
 const api = {

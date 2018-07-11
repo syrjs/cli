@@ -1,11 +1,12 @@
 import fs from 'fs';
+import path from 'path';
 
 function read(filePath) {
-  let data;
+  let data = {};
   try {
     data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
   } catch (e) {
-    write();
+    write(filePath, data);
   }
   return data;
 }

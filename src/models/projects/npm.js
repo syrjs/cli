@@ -1,14 +1,16 @@
 import path from 'path';
+import { log } from 'utils/logger';
 
-let info = {};
+let project = {};
 let packageJSONPath = path.join(process.cwd(), 'package.json');
 
 try {
-  info = require(packageJSONPath);
+  project = require(packageJSONPath);
 } catch (e) {
   log.error(
-    `No package.json found in the command directory. ${packageJSONPath}`
+    `No package.json found in the command directory. Looking for ${packageJSONPath}`
   );
+  process.exit(0);
 }
 
-export { info };
+export { project };
