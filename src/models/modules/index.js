@@ -49,3 +49,29 @@ function isSyrModule(modulePath, moduleDirectory) {
 }
 
 export { get };
+
+
+
+      // if (
+      //   currentVersion.meta.ios &&
+      //   currentVersion.meta.ios.dependencies.length < 1
+      // ) {
+      //   inquirer
+      //     .prompt([
+      //       {
+      //         type: 'list',
+      //         name: 'ManageNativeProjects',
+      //         message: localeStrings.get(
+      //           'No dependencies found for iOS would you like to scan node_modules'
+      //         ),
+      //         choices: [
+      //           { name: 'Yes', value: true },
+      //           { name: 'No', value: false }
+      //         ]
+      //       }
+      //     ])
+      //     .then(answers => {
+      //       if (answers.ManageNativeProjects) linkCMD([], {});
+      //       resolve();
+      //     });
+      // }

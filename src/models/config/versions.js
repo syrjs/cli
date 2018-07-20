@@ -2,6 +2,31 @@ import { project as syrProject } from 'models/projects/syr';
 import { log } from 'utils/logger';
 
 class manager {
+  async getVersionList() {
+    return new Promise(async resolve => {
+      await syrProject.read();
+      const versions = syrProject.data.versions || {};
+      const versionList = [];
+
+      for (var version in versions) {
+        if (versions.hasOwnProperty(version)) {
+          versionList.push({
+            version: version
+          })
+        }
+      }
+
+      resolve(versionList);
+    });
+  }
+  async getVersion(versionTag) {
+    return new Promise(async resolve => {
+      await syrProject.read();
+      const versions = syrProject.data.versions || {};
+      const version = versions[versionTag];
+      resolve({ semver: versionTag, meta: version });
+    });
+  }
   async getCurrentVersion() {
     return new Promise(async resolve => {
       await syrProject.read();
@@ -19,7 +44,7 @@ class manager {
       }
 
       const projectTemplate = { dependencies: [], info: {} };
-      versions[version] = { ios: projectTemplate, android: projectTemplate };
+      versions[version] = { ios: JSON.parse(JSON.stringify(projectTemplate)), android: JSON.parse(JSON.stringify(projectTemplate)) };
       syrProject.data.versions = versions;
       syrProject.write();
       resolve({ semver: version, meta: versions[version] });

@@ -17,13 +17,30 @@ function getDirs(rootDir, cb) {
   return dirs;
 }
 
-function recursiveDirectoriesByName(base, name) {
+function recursiveDirectoriesByName(base, name, excludes) {
 
   let ret = [];
 
   // check to see if this is a directory before we dive into it
   let stats = fs.lstatSync(base);
-  if(!stats.isDirectory()) {
+
+  if(excludes) {
+    //check excludes
+    let skip = false;
+    excludes.forEach(exclude => {
+      skip = base.indexOf(exclude) > -1 ? true : false;
+    });
+    if(skip) {
+      return ret;
+    }
+  }
+
+  if(stats.isSymbolicLink()) {
+    base = fs.realpathSync(base);
+    stats = fs.lstatSync(base);
+  }
+
+  if(!stats.isDirectory() || base.indexOf('DerivedData') > -1) {
     return ret;
   }
 
@@ -36,7 +53,7 @@ function recursiveDirectoriesByName(base, name) {
         value: path.join(base, dir)
       });
     } else {
-      let subdirs = recursiveDirectoriesByName(path.join(base, dir), name);
+      let subdirs = recursiveDirectoriesByName(path.join(base, dir), name, excludes);
       ret = ret.concat(subdirs);
     }
   });

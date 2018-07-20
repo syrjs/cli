@@ -2,16 +2,17 @@
 import 'regenerator-runtime/runtime';
 import projectPackage from '../package.json';
 import { project as syrProject } from 'models/projects/syr';
-
 import { log } from 'utils/logger';
 
 const currentVersion = syrProject.data && syrProject.data.currentVersion;
 
 log('');
-log(`${log.chalk.yellow('Syr CLI')}`);
+log(`${log.chalk.yellow('Syr CLI')} v${projectPackage.version}` );
 log.info(
-  `[v${projectPackage.version}] [Current Version: ${log.chalk.magenta(
+  `[Current Project Version: ${log.chalk.magenta(
     currentVersion
+  )}] [Current Project Release: ${log.chalk.magenta(
+    'none'
   )}]`
 );
 

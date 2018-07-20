@@ -5,9 +5,9 @@ import { recursiveDirectoriesByName } from 'utils';
 const project = {
   write: () => {},
   read: projectPath => {},
-  findProjects: async basePath => {
+  findProjects: async (basePath, excludes) => {
     return new Promise(resolve => {
-      resolve(recursiveDirectoriesByName(basePath, 'xcodeproj'));
+      resolve(recursiveDirectoriesByName(basePath, 'xcodeproj', excludes));
     });
   }
 };
