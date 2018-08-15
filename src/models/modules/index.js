@@ -28,6 +28,10 @@ function get(modulesPath) {
   return modulesToLink;
 }
 
+function compare() {
+
+}
+
 function isSyrModule(modulePath, moduleDirectory) {
   let modulePackage;
 
@@ -48,7 +52,7 @@ function isSyrModule(modulePath, moduleDirectory) {
   return false;
 }
 
-export { get };
+export { get, compare };
 
 
 

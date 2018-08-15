@@ -43,7 +43,7 @@ class manager {
         resolve({ semver: version, meta: versions[version] });
       }
 
-      const projectTemplate = { dependencies: [], info: {} };
+      const projectTemplate = { dependencies: {}, info: {} };
       versions[version] = { ios: JSON.parse(JSON.stringify(projectTemplate)), android: JSON.parse(JSON.stringify(projectTemplate)) };
       syrProject.data.versions = versions;
       syrProject.write();

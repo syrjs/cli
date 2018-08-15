@@ -8,9 +8,9 @@ async function commands(command, optionals) {
     module = require(`./${command}`);
     await module.cmd.apply(this, optionals);
   } catch (e) {
-    if(e.message.indexOf('Cannot find module') > -1) {
+    // if(e.message.indexOf('Cannot find module') > -1) {
       log.warn(`${command} command not found`);
-    }
+    // }
   }
 }
 
