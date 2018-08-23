@@ -28,35 +28,44 @@ const api = {
       currentVersion = await VersionManager.createVersion(npmProject.version);
       VersionManager.setCurrentVersion(currentVersion);
     } else {
-      if(npmProject.version != currentVersion.semver) {
+      if (npmProject.version != currentVersion.semver) {
         // this version is not the current version
         let isVersionAvailable = await api.checkForVersion(npmProject.version);
-        if(!isVersionAvailable) {
+        if (!isVersionAvailable) {
           // new version
-          log.info(`Creating new version ${npmProject.version}`)
-          currentVersion = await VersionManager.createVersion(npmProject.version);
+          log.info(`Creating new version ${npmProject.version}`);
+          currentVersion = await VersionManager.createVersion(
+            npmProject.version
+          );
           VersionManager.setCurrentVersion(currentVersion);
         } else {
-          log.error(`package.json version ${npmProject.version} does not match syr.json currentProject ${currentVersion.semver}.`)
+          log.error(
+            `package.json version ${npmProject.version} does not match syr.json currentProject ${currentVersion.semver}.`
+          );
           const shouldSwitchProjects = await inquirer.prompt([
             {
               type: 'list',
               name: 'result',
               message: `Switch current project in syr.json to ${npmProject.version}?`,
-              choices: [{ name: 'Yes', value: true }, { name: 'No', value: false }]
+              choices: [
+                { name: 'Yes', value: true },
+                { name: 'No', value: false }
+              ]
             }
           ]);
-          if(shouldSwitchProjects.result) {
+          if (shouldSwitchProjects.result) {
             await api.switchVersion(npmProject.version);
           } else {
-            log.warn('current syr project version, and current npm project version do not match, becareful.')
+            log.warn(
+              'current syr project version, and current npm project version do not match, becareful.'
+            );
           }
         }
       }
     }
     return currentVersion;
   },
-  switchVersion: async (versionTag) => {
+  switchVersion: async versionTag => {
     let version = await VersionManager.getVersion(versionTag);
 
     console.log('setting version to this >>> ', version.semver);
@@ -66,10 +75,10 @@ const api = {
     console.log('version', currentVersion);
     log(`current version set to ${currentVersion}`);
   },
-  checkForVersion: async (versionTag) => {
+  checkForVersion: async versionTag => {
     let version = await VersionManager.getVersion(versionTag);
 
-    if(version.meta) {
+    if (version.meta) {
       return true;
     }
 
@@ -78,7 +87,7 @@ const api = {
   displayAllVersions: async () => {
     let versionList = await VersionManager.getVersionList();
 
-    if(versionList.length < 1) {
+    if (versionList.length < 1) {
       let currentVersion = await api.getCurrentVersion();
       versionList = await VersionManager.getVersionList();
     }
@@ -99,7 +108,7 @@ const api = {
 async function cmd(parameters, switches) {
   if (switches.debug) {
     await api.debugInfo();
-  } else if(switches.list) {
+  } else if (switches.list) {
     await api.displayAllVersions();
   } else {
     // no switch provided just get version info

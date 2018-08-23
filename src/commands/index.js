@@ -9,7 +9,7 @@ async function commands(command, optionals) {
     await module.cmd.apply(this, optionals);
   } catch (e) {
     // if(e.message.indexOf('Cannot find module') > -1) {
-      log.warn(`${command} command not found`);
+    log.warn(`${e} command not found`);
     // }
   }
 }

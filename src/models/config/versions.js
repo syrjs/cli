@@ -12,7 +12,7 @@ class manager {
         if (versions.hasOwnProperty(version)) {
           versionList.push({
             version: version
-          })
+          });
         }
       }
 
@@ -44,7 +44,10 @@ class manager {
       }
 
       const projectTemplate = { dependencies: {}, info: {} };
-      versions[version] = { ios: JSON.parse(JSON.stringify(projectTemplate)), android: JSON.parse(JSON.stringify(projectTemplate)) };
+      versions[version] = {
+        ios: JSON.parse(JSON.stringify(projectTemplate)),
+        android: JSON.parse(JSON.stringify(projectTemplate))
+      };
       syrProject.data.versions = versions;
       syrProject.write();
       resolve({ semver: version, meta: versions[version] });

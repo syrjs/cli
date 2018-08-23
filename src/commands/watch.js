@@ -14,9 +14,9 @@ const api = {
   watch: () => {
     var tcpPortUsed = require('tcp-port-used');
 
-    tcpPortUsed.check(8080, '127.0.0.1')
-    .then(function(inUse) {
-        if(!inUse) {
+    tcpPortUsed.check(8080, '127.0.0.1').then(
+      function(inUse) {
+        if (!inUse) {
           if (fs.existsSync('package.json')) {
             console.log('Starting Webpack Dev Server');
             execSync(watchCommand, { stdio: 'inherit' });
@@ -25,11 +25,15 @@ const api = {
           }
         } else {
           log.warn('Server already running on port 8080');
-          log('todo: Make this more robust :D some cool feature to start more servers, or point native apps here');
+          log(
+            'todo: Make this more robust :D some cool feature to start more servers, or point native apps here'
+          );
         }
-    }, function(err) {
+      },
+      function(err) {
         log.error('Error on check:', err.message);
-    });
+      }
+    );
   }
 };
 

@@ -40,7 +40,9 @@ async function verifyProject() {
 
       if (shouldManageNativeProjects.result) {
         // look for projects outside of node_modules to manage
-        const projects = await iosProject.findProjects(process.cwd(), ['node_modules']);
+        const projects = await iosProject.findProjects(process.cwd(), [
+          'node_modules'
+        ]);
         const whichBaseProject = await inquirer.prompt([
           {
             type: 'list',
