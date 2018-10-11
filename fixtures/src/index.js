@@ -1,4 +1,4 @@
-import { Component, Render, View, Dimensions, Animated } from '@syr/core';
+import { Component, Render, View, Dimensions, Text } from '@syr/core';
 
 const styles = {
   view: {
