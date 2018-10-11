@@ -35,20 +35,10 @@ module.exports = {
       {
         test: /.js?$/,
         loader: 'babel-loader',
-        exclude: /node_modules/,
-        query: {
-          presets: [
-            [
-              'env',
-              {
-                targets: {
-                  browsers: ['Android >= 4', 'safari >= 7'],
-                  uglify: true
-                }
-              }
-            ]
-          ]
-        }
+        include: [
+          path.resolve(__dirname, './src'),
+          path.resolve(__dirname, './node_modules/@syr/core')
+        ]
       },
       {
         test: /\.(png|jpg|gif)$/,
