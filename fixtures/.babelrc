@@ -1,8 +1,11 @@
 {
   "presets": [
-    ["env"]
+    ["env", {
+      "targets": {
+        "browsers": ["Android >= 4", "safari >= 7"],
+        "uglify": true
+      }
+    }]
   ],
-  "plugins": [
-    ["@syr/jsx", {"useVariables":true}]
-  ]
+  "plugins": [["@syr/jsx",  { "useVariables": true, "useGuid":true }]]
 }
