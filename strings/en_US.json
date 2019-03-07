@@ -9,7 +9,7 @@
   "Links or Unlinks node_modules to the current project":"Links or Unlinks node_modules to the current project",
   "Description": "Description",
   "Usage":"Usage",
-  "Not Implimented":"Not Implimented",
+  "Not Implemented":"Not Implemented",
   "No current version set":"No current version set.",
   "Setting current version":"Setting current version",
   "Which base project should we use to manage modules for iOS":"Which base project should we use to manage modules for iOS?",
